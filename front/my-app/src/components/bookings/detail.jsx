@@ -1,17 +1,30 @@
 import React, { useEffect, useState } from "react";
-/* import { Prompt } from "react-router-dom"; */
 import bookingStore from "../../stores/bookingStore";
 import { loadBooking } from "../../actions/booking-actions";
+import { formateDate } from "../../utils/utils";
 import "./detail.css";
-/* import TextInput from "./TextInput"; */
 
 function BookingDetail(props) {
   const [booking, setBooking] = useState(bookingStore.getBooking());
   const [roomId, setRoomId] = useState(+props.match?.params?.roomId);
-  /*  const [isFormDirty, setIsFormDirty] = useState(false); */
-  const ind = 10;
-  const twin = 10;
-  const double = 5;
+
+  const roomDetail = {
+    date: 1599551388000,
+    rooms: {
+      individual: {
+        total: 10,
+        available: 10,
+      },
+      twin: {
+        total: 10,
+        available: 10,
+      },
+      double: {
+        total: 5,
+        available: 5,
+      },
+    },
+  };
 
   useEffect(() => {
     bookingStore.addChangeListener(onChange);
@@ -32,7 +45,7 @@ function BookingDetail(props) {
 
   return (
     <div className="container">
-      <h1 className="container__title">21 - 09 - 2020</h1>
+      <h1 className="container__title">{formateDate(roomDetail.date)}</h1>
       <div className="container__info">
         <h2 className="h2">INDIVIDUAL</h2>
         <div className="individual__img">
@@ -43,7 +56,7 @@ function BookingDetail(props) {
           <div>
             <h3 className="h3">TOTAL</h3>
             <input
-              value={ind}
+              value={roomDetail.rooms.individual.total}
               type="number"
               min="0"
               max="10"
@@ -53,9 +66,8 @@ function BookingDetail(props) {
           <div>
             <h3 className="h3">DISPONIBLE</h3>
             <input
-              value={ind}
+              value={roomDetail.rooms.individual.available}
               type="number"
-              min="0"
               max="10"
               className="booking__detail--input"
             />
@@ -78,7 +90,7 @@ function BookingDetail(props) {
           <div>
             <h3 className="h3">TOTAL</h3>
             <input
-              value={twin}
+              value={roomDetail.rooms.twin.total}
               type="number"
               min="0"
               max="10"
@@ -88,9 +100,8 @@ function BookingDetail(props) {
           <div>
             <h3 className="h3">DISPONIBLE</h3>
             <input
-              value={twin}
+              value={roomDetail.rooms.twin.available}
               type="number"
-              min="0"
               max="10"
               className="booking__detail--input"
             />
@@ -104,7 +115,7 @@ function BookingDetail(props) {
           <div>
             <h3 className="h3">TOTAL</h3>
             <input
-              value={double}
+              value={roomDetail.rooms.double.total}
               type="number"
               min="0"
               max="5"
@@ -114,9 +125,8 @@ function BookingDetail(props) {
           <div>
             <h3 className="h3">DISPONIBLE</h3>
             <input
-              value={double}
+              value={roomDetail.rooms.double.available}
               type="number"
-              min="0"
               max="5"
               className="booking__detail--input"
             />
