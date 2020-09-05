@@ -1,23 +1,21 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const debug = require("debug")("index");
+const debug = require("debug")("app");
 const bodyParser = require("body-parser");
 
-const index = express();
+const app = express();
 const port = process.env.PORT || 3000;
 
 const RoomDetail = require("./models/bookingModel");
 
-index.use(bodyParser.urlencoded({ extended: true }));
-index.use(bodyParser.json);
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // eslint-disable-next-line no-unused-vars
-const db = mongoose.connect(
-  "mongodb+srv://admin:admin1234@cluster0.rpj2g.mongodb.net/MHotAPI?retryWrites=true&w=majority"
-);
+const db = mongoose.connect("mongodb://localhost/MHotAPI");
 
 const bookingRouter = require("./src/routes/bookingRouter")(RoomDetail);
 
-index.use("/booking", bookingRouter);
+app.use("/api/booking", bookingRouter);
 
-index.listen(port, () => debug(`Server is running in port ${port}!`));
+app.listen(port, () => debug(`Server is running in port ${port}!`));

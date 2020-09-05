@@ -5,7 +5,8 @@ const bookingRouter = express.Router();
 
 function routes(RoomDetail) {
   const controller = bookingRouterController(RoomDetail);
-  bookingRouter.route("/").get(controller.get);
+  bookingRouter.route("/:bookingDate").get(controller.get);
+  bookingRouter.route("/").get(controller.getList);
 
   return bookingRouter;
 }
