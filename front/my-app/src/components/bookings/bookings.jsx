@@ -1,5 +1,5 @@
 import React, { /* Component */ useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link /* useHistory  */ } from "react-router-dom";
 import bookingStore from "../../stores/bookingStore";
 import { loadBookingList } from "../../actions/booking-actions";
 import { formateDate } from "../../utils/utils";

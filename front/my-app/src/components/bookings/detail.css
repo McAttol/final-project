@@ -4,6 +4,7 @@
   justify-content: center;
   margin-top: 0;
   padding-top: 10px;
+  font-size: 30px;
 }
 .individual__img img {
   width: 60px;
@@ -22,9 +23,9 @@
   flex-direction: column;
 }
 .container {
-  height: 100vh;
-  padding-left: 10px;
-  padding-right: 10px;
+  width: 100vw;
+  height: 100%;
+  margin-top: 100px;
   background: lightgrey;
 }
 .individual__img {
@@ -35,9 +36,11 @@
 .h3 {
   margin-top: 0;
   color: rgb(54, 54, 53);
+  font-size: 15px;
 }
 .h2 {
   color: rgb(54, 54, 53);
+  font-size: 20px;
 }
 .individual__img div {
   display: flex;
@@ -48,4 +51,12 @@
 .booking__detail--input {
   width: 50px;
   border: 1px solid black;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+}
+#root {
+  width: 100vw;
+  height: 100vh;
 }
