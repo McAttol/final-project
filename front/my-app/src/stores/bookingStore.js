@@ -1,4 +1,4 @@
-import { EventEmitter } from "events";
+import EventEmitter from "events";
 import dispatcher from "../dispatcher";
 import actionTypes from "../actions/action-types";
 
@@ -23,24 +23,22 @@ class BookingStore extends EventEmitter {
     return _booking;
   }
 
-  getRoomById(id) {
-    return _booking.find((room) => room.id === id);
+  getRoomsByDate(date) {
+    return _booking.find((bookings) => bookings.date === date);
   }
 }
 
 const bookingStore = new BookingStore();
 dispatcher.register((action) => {
   switch (action.type) {
-    case actionTypes.LOAD_BOOKING_ROOMS:
+    case actionTypes.LOAD_BOOKING_LIST:
       _booking = action.data;
       bookingStore.emitChange();
       break;
-    case actionTypes.UPDATE_BOOKING_ROOMS:
-      _booking = _booking.map((room) => {
-        if (room.id === action.data.id) room.name = action.data.name;
-        return room;
-      });
-      bookingStore.emitChange();
+    case actionTypes.LOAD_BOOKING_ROOMS:
+      _booking = action.data;
+      console.log(_booking);
+      bookingStore.emitChange(_booking);
       break;
     default:
       break;

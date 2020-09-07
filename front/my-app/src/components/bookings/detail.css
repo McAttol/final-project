@@ -23,9 +23,9 @@
 }
 .container {
   height: 100vh;
-  padding-left: 50px;
-  padding-right: 50px;
-  background: lightblue;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: lightgrey;
 }
 .individual__img {
   display: flex;
@@ -47,4 +47,5 @@
 }
 .booking__detail--input {
   width: 50px;
+  border: 1px solid black;
 }
