@@ -4,18 +4,18 @@ import actionTypes from "./action-types";
 
 export function loadBooking(bookingDate) {
   return axios.get(`/api/booking/${bookingDate}`).then((bookings) => {
+    console.log(bookings);
     dispatcher.dispatch({
       type: actionTypes.LOAD_BOOKING_ROOMS,
       data: bookings.data,
     });
   });
 }
-export function loadBookingList(bookingList) {
+export function loadBookingList() {
   return axios.get(`/api/booking/`).then((bookingsList) => {
-    console.log(bookingsList);
     dispatcher.dispatch({
       type: actionTypes.LOAD_BOOKING_LIST,
-      data: bookingsList,
+      data: bookingsList.data,
     });
   });
 }

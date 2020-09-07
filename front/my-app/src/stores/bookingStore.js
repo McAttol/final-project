@@ -1,4 +1,4 @@
-import { EventEmitter } from "events";
+import EventEmitter from "events";
 import dispatcher from "../dispatcher";
 import actionTypes from "../actions/action-types";
 
@@ -37,8 +37,8 @@ dispatcher.register((action) => {
       break;
     case actionTypes.LOAD_BOOKING_ROOMS:
       _booking = action.data;
-
-      bookingStore.emitChange();
+      console.log(_booking);
+      bookingStore.emitChange(_booking);
       break;
     default:
       break;

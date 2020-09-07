@@ -1,9 +1,34 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { /* Component */ useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import bookingStore from "../../stores/bookingStore";
 import { loadBookingList } from "../../actions/booking-actions";
 import { formateDate } from "../../utils/utils";
+/* import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css"; */
 
+/* function BookingList() {
+  let [date, setDate] = useState(bookingStore.getRoomsByDate());
+
+  let onChange = (date) => setDate({ date });
+  let history = useHistory();
+
+  function routeChange(value) {
+    let x = new Date();
+    let milli = x.getTime(value);
+    milli.toString();
+    history.push(`/booking/${milli}`);
+  }
+
+  return (
+    <Calendar
+      locale="en"
+      onChange={onChange}
+      value={date}
+      onClickDay={(value, event) => routeChange(value)}
+    />
+  );
+}
+ */
 function BookingList() {
   const [bookings, setBookings] = useState(bookingStore.getBooking());
 
@@ -21,7 +46,9 @@ function BookingList() {
     <ul>
       {bookings.map((bookings) => (
         <li key={bookings.date} className="">
-          <Link to={`/${bookings.date}`}>{formateDate(bookings.date)}</Link>
+          <Link to={`/booking/${bookings.date}`}>
+            {formateDate(bookings.date)}
+          </Link>
         </li>
       ))}
     </ul>

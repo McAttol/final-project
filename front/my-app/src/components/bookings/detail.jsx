@@ -4,10 +4,11 @@ import { loadBooking } from "../../actions/booking-actions";
 import { formateDate } from "../../utils/utils";
 import "./detail.css";
 
-loadBooking("1599551388000");
-
 function BookingDetail(props) {
-  const [booking, setBooking] = useState(bookingStore.getBooking());
+  console.log(props.match.params.bookingDate);
+  const [booking, setBooking] = useState(
+    bookingStore.getRoomsByDate(+props.match.params.bookingDate)
+  );
 
   useEffect(() => {
     bookingStore.addChangeListener(onChange);
@@ -20,11 +21,10 @@ function BookingDetail(props) {
   function onChange() {
     setBooking(bookingStore.getBooking());
   }
-  console.log(booking);
   return (
     (booking && (
       <div className="container">
-        <h1 className="container__title">{formateDate(booking[0].date)}</h1>
+        <h1 className="container__title">{formateDate(booking.date)}</h1>
         <div className="container__info">
           <h2 className="h2">INDIVIDUAL</h2>
           <div className="individual__img">
@@ -35,7 +35,7 @@ function BookingDetail(props) {
             <div>
               <h3 className="h3">TOTAL</h3>
               <input
-                value={booking[0].rooms.individual.total}
+                value={booking.rooms.individual.total}
                 type="number"
                 min="0"
                 max="10"
@@ -45,7 +45,7 @@ function BookingDetail(props) {
             <div>
               <h3 className="h3">DISPONIBLE</h3>
               <input
-                value={booking[0].rooms.individual.available}
+                value={booking.rooms.individual.available}
                 type="number"
                 max="10"
                 className="booking__detail--input"
@@ -69,7 +69,7 @@ function BookingDetail(props) {
             <div>
               <h3 className="h3">TOTAL</h3>
               <input
-                value={booking[0].rooms.twin.total}
+                value={booking.rooms.twin.total}
                 type="number"
                 min="0"
                 max="10"
@@ -79,7 +79,7 @@ function BookingDetail(props) {
             <div>
               <h3 className="h3">DISPONIBLE</h3>
               <input
-                value={booking[0].rooms.twin.available}
+                value={booking.rooms.twin.available}
                 type="number"
                 max="10"
                 className="booking__detail--input"
@@ -94,7 +94,7 @@ function BookingDetail(props) {
             <div>
               <h3 className="h3">TOTAL</h3>
               <input
-                value={booking[0].rooms.double.total}
+                value={booking.rooms.double.total}
                 type="number"
                 min="0"
                 max="5"
@@ -104,7 +104,7 @@ function BookingDetail(props) {
             <div>
               <h3 className="h3">DISPONIBLE</h3>
               <input
-                value={booking[0].rooms.double.available}
+                value={booking.rooms.double.available}
                 type="number"
                 max="5"
                 className="booking__detail--input"
