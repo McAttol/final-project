@@ -1,0 +1,21 @@
+.profile__container {
+  width: 100vw;
+  height: 100vh;
+}
+.profile__container img {
+  width: 100vw;
+  max-height: 40vh;
+}
+.logout__button {
+  width: 100vw;
+  height: 100px;
+  position: fixed;
+  bottom: 0;
+  background-color: red;
+  color: white;
+  border: none;
+  font-size: 30px;
+}
+.logout__button:hover {
+  color: lightgrey;
+}
