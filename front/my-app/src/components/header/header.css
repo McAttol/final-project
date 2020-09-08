@@ -52,7 +52,7 @@
   position: fixed;
 }
 
-.header__logout {
+.header__profile {
   border: 2px solid black;
   background: transparent;
   background-image: url("https://icon-library.com/images/login-icon-png/login-icon-png-1.jpg");
@@ -63,6 +63,6 @@
   width: 60px;
   height: 60px;
 }
-.header__logout:hover {
+.header__profile:hover {
   border: 2px solid red;
 }

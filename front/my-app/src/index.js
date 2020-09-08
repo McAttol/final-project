@@ -3,14 +3,19 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { BrowserRouter as Router } from "react-router-dom";
+import { Auth0Provider } from "@auth0/auth0-react";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
+  <Auth0Provider
+    domain="mcattol.eu.auth0.com"
+    clientId="KcKWDHj4UnaXGQerPgG7cmk2aQqfmNBn"
+    redirectUri={window.location.origin}
+  >
+    <BrowserRouter>
       <App />
-    </Router>
-  </React.StrictMode>,
+    </BrowserRouter>
+  </Auth0Provider>,
   document.getElementById("root")
 );
 
