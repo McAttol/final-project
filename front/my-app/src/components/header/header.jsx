@@ -1,4 +1,5 @@
 import React from "react";
+import Menu from "./header-menu";
 import Logo from "../../utils/logo_ramon.jpg";
 import "./header.css";
 import { useHistory } from "react-router-dom";
@@ -24,12 +25,7 @@ function Header() {
             />
           </button>
         </div>
-        <button className="header__menu--button">
-          <img
-            src="https://image.flaticon.com/icons/png/512/55/55003.png"
-            alt="menu button"
-          />
-        </button>
+        <Menu />
         <button
           className="header__profile"
           onClick={() => history.push("/profile")}

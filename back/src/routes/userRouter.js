@@ -4,8 +4,9 @@ const userRouterController = require("../../controllers/userRouterController");
 const userRouter = express.Router();
 
 function routes(userDetail) {
-  // eslint-disable-next-line no-unused-vars
   const controller = userRouterController(userDetail);
+
+  userRouter.route("/:user").get(controller.get);
 
   return userRouter;
 }

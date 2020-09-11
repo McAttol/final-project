@@ -29,7 +29,7 @@ function BookingDetail(props) {
           <h2 className="h2">INDIVIDUAL</h2>
           <div className="individual__img">
             <img
-              src="https://image.flaticon.com/icons/png/512/78/78257.png"
+              src="https://trello-attachments.s3.amazonaws.com/5f11b957273429681522af65/5f5755d3493d338105fdb51a/da21630f0e3b6a56356b6668273796c8/1.png"
               alt="individual bed"
             />
             <div>
@@ -58,11 +58,7 @@ function BookingDetail(props) {
           <div className="individual__img">
             <div className="twin">
               <img
-                src="https://image.flaticon.com/icons/png/512/78/78257.png"
-                alt="twin bed"
-              />
-              <img
-                src="https://image.flaticon.com/icons/png/512/78/78257.png"
+                src="https://trello-attachments.s3.amazonaws.com/5f11b957273429681522af65/5f5755d3493d338105fdb51a/3d19d5395aa8d8a2c833890d039c4588/2.png"
                 alt="twin bed"
               />
             </div>
@@ -88,7 +84,7 @@ function BookingDetail(props) {
           </div>
           <div className="individual__img">
             <img
-              src="https://i.pinimg.com/originals/3c/b8/f8/3cb8f87972f071b0b287a9a1015a9949.png"
+              src="https://trello-attachments.s3.amazonaws.com/5f11b957273429681522af65/5f5755d3493d338105fdb51a/c863ffbd6ad18092cc621a0f0188a89e/3.png"
               alt="double bed"
             />
             <div>
@@ -113,7 +109,7 @@ function BookingDetail(props) {
           </div>
         </div>
       </div>
-    )) || <p>loading</p>
+    )) || <p>Mooooc!!</p>
   );
 }
 export default BookingDetail;

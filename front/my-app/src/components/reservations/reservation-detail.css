@@ -1,0 +1,4 @@
+.container__reservation--detail {
+  display: flex;
+  flex-direction: column;
+}

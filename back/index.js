@@ -8,6 +8,7 @@ const port = process.env.PORT || 3000;
 
 const RoomDetail = require("./models/bookingModel");
 const UserDetail = require("./models/userModel");
+const Reservation = require("./models/reservationModel");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -21,6 +22,12 @@ app.use("/api/booking", bookingRouter);
 
 const userRouter = require("./src/routes/userRouter")(UserDetail);
 
-app.use("/api/user", userRouter);
+app.use("/api/users", userRouter);
+
+const reservationsRouter = require("./src/routes/reservationsRouter")(
+  Reservation
+);
+
+app.use("/api/reservations", reservationsRouter);
 
 app.listen(port, () => debug(`Server is running in port ${port}!`));
