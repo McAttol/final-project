@@ -1,27 +1,4 @@
 function reservationController(Reservation) {
-  function getDetail(req, res) {
-    if (req.params && req.params.reservationNumber) {
-      const reservation = +req.params.reservationNumber;
-      Reservation.find(
-        { reservationNumber: reservation },
-        (error, availability) => {
-          if (error) {
-            res.status(404);
-            res.send("Not found");
-          } else if (reservation === 0) {
-            res.status(404);
-            res.send("reservation not found");
-          } else {
-            res.status(200);
-            res.json(availability);
-          }
-        }
-      );
-    } else {
-      res.status(404);
-      res.send("not found");
-    }
-  }
   function getList(req, res) {
     const reservationList = {};
     Reservation.find(reservationList, (error, reservations) => {
@@ -32,6 +9,9 @@ function reservationController(Reservation) {
         res.json(reservations);
       }
     });
+  }
+  function getDetail(req, res) {
+    res.send(req.available);
   }
   function saveRes(req, res) {
     const reservation = new Reservation(req.body);
@@ -46,24 +26,24 @@ function reservationController(Reservation) {
   }
 
   function upLoad(req, res) {
-    const { reservation } = req;
-    if (reservation) {
-      reservation.name = req.body.name;
-      reservation.reservationNumber = req.body.reservationNumber;
-      reservation.roomNumber = req.body.roomNumber;
-      reservation.arrivalDate = req.body.arrivalDate;
-      reservation.departudeDate = req.body.departudeDate;
-      reservation.familyName = req.body.familyName;
-      reservation.name = req.body.name;
-      reservation.roomType = req.body.roomType;
-      reservation.pension = req.body.pension;
-      reservation.daysTotal = req.body.daysTotal;
-      reservation.passportNumber = req.body.passportNumber;
-      reservation.save((err) => {
+    const { availability } = req;
+    if (availability) {
+      availability.name = req.body.name;
+      availability.reservationNumber = req.body.reservationNumber;
+      availability.roomNumber = req.body.roomNumber;
+      availability.arrivalDate = req.body.arrivalDate;
+      availability.departureDate = req.body.departureDate;
+      availability.familyName = req.body.familyName;
+      availability.name = req.body.name;
+      availability.roomType = req.body.roomType;
+      availability.pension = req.body.pension;
+      availability.daysTotal = req.body.daysTotal;
+      availability.passportNumber = req.body.passportNumber;
+      availability.save((err) => {
         if (err) {
           res.send(err);
         } else {
-          res.json(reservation);
+          res.json(availability);
         }
       });
     }

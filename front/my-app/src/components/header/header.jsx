@@ -3,12 +3,9 @@ import Menu from "./header-menu";
 import Logo from "../../utils/logo_ramon.jpg";
 import "./header.css";
 import { useHistory } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
 
 function Header() {
   let history = useHistory();
-  const { user } = useAuth0();
-  console.log(user);
   return (
     <div className="header">
       <div className="header__container">

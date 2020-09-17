@@ -5,6 +5,11 @@
   margin-top: 0;
   padding-top: 10px;
   font-size: 30px;
+  padding-top: 100px;
+}
+.bookings__container {
+  margin-top: 0;
+  padding-top: 100px;
 }
 .individual__img img {
   width: 60px;
@@ -25,8 +30,9 @@
 .container {
   width: 100vw;
   height: 100%;
-  margin-top: 100px;
-  background: lightgrey;
+  background-image: url("https://trello-attachments.s3.amazonaws.com/5f11b957273429681522af65/5f5755d3493d338105fdb51a/054328060ca33fb5438a5781bedce1e3/imagen.jpeg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 .individual__img {
   display: flex;

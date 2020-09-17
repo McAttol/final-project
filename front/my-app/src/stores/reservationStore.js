@@ -42,7 +42,6 @@ class ReservationsStore extends EventEmitter {
 
 const reservationsStore = new ReservationsStore();
 dispatcher.register((action) => {
-  console.log(action.type);
   switch (action.type) {
     case actionTypes.LOAD_RESERVATION_LIST:
       _reservations = action.data;
@@ -54,6 +53,7 @@ dispatcher.register((action) => {
       reservationsStore.emitChange(_reservations);
       break;
     case actionTypes.UPDATE_RESERVATION:
+      console.log(_reservations);
       _reservations = _reservations.map((reservations) => {
         if (reservations.reservationNumber === action.data.reservationNumber) {
           reservations.roomNumber = action.data.roomNumber;

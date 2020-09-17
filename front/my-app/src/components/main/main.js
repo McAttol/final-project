@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import "./main.css";
 
 function Main() {
   return (
-    <div>
-      <NavLink to="/reservations/:reservationNumber" className="main__add">
-        Add booking
+    <div className="main__container">
+      <NavLink to={`/reservations/0`} className="main__add">
+        <img src="https://www.onlygfx.com/wp-content/uploads/2018/07/8-grunge-plus-sign-7-928x1024.png"></img>
       </NavLink>
     </div>
   );

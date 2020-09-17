@@ -2,6 +2,7 @@ function bookingController(RoomsDetail) {
   function get(req, res) {
     if (req.params && req.params.bookingDate) {
       const date = +req.params.bookingDate;
+
       RoomsDetail.find({ date }, (error, availability) => {
         if (error) {
           res.status(404);

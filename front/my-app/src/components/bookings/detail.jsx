@@ -1,30 +1,33 @@
 import React, { useEffect, useState } from "react";
 import bookingStore from "../../stores/bookingStore";
 import { loadBooking } from "../../actions/booking-actions";
-import { formateDate } from "../../utils/utils";
+import { formatDate } from "../../utils/utils";
 import "./detail.css";
 
 function BookingDetail(props) {
-  console.log(props.match.params.bookingDate);
+  console.log(+props.match.params.bookingDate);
   const [booking, setBooking] = useState(
     bookingStore.getRoomsByDate(+props.match.params.bookingDate)
   );
 
   useEffect(() => {
     bookingStore.addChangeListener(onChange);
-    if (booking.length === 0) {
-      loadBooking();
+
+    if (!booking) {
+      loadBooking(props.match.params.bookingDate);
     }
+
     return () => bookingStore.removeChangeListener(onChange);
-  }, [booking.length]);
+  }, [booking]);
 
   function onChange() {
-    setBooking(bookingStore.getBooking());
+    setBooking(bookingStore.getRoomsByDate(+props.match.params.bookingDate));
   }
+  console.log(booking);
   return (
     (booking && (
       <div className="container">
-        <h1 className="container__title">{formateDate(booking.date)}</h1>
+        <h1 className="container__title">{formatDate(booking.date)}</h1>
         <div className="container__info">
           <h2 className="h2">INDIVIDUAL</h2>
           <div className="individual__img">

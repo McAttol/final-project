@@ -24,21 +24,19 @@ class BookingStore extends EventEmitter {
   }
 
   getRoomsByDate(date) {
-    return _booking.find((bookings) => bookings.date === date);
+    const res = _booking.find((bookings) => {
+      return bookings.date === date;
+    });
+    return res;
   }
 }
 
 const bookingStore = new BookingStore();
 dispatcher.register((action) => {
   switch (action.type) {
-    case actionTypes.LOAD_BOOKING_LIST:
-      _booking = action.data;
-      bookingStore.emitChange();
-      break;
     case actionTypes.LOAD_BOOKING_ROOMS:
       _booking = action.data;
-      console.log(_booking);
-      bookingStore.emitChange(_booking);
+      bookingStore.emitChange();
       break;
     default:
       break;

@@ -53,9 +53,9 @@
 }
 
 .header__profile {
-  border: 2px solid black;
+  border: 2px solid transparent;
   background: transparent;
-  background-image: url("https://icon-library.com/images/login-icon-png/login-icon-png-1.jpg");
+  background-image: url("https://trello-attachments.s3.amazonaws.com/5f11b957273429681522af65/5f5755d3493d338105fdb51a/b5ad9bb7589f3534b8903bcbfc0dc6ed/img.png");
   background-size: 100% 90%;
   background-repeat: no-repeat;
   border-radius: 50%;

@@ -16,17 +16,14 @@ app.use(bodyParser.json());
 // eslint-disable-next-line no-unused-vars
 const db = mongoose.connect("mongodb://localhost/MHotAPI");
 
-const bookingRouter = require("./src/routes/bookingRouter")(RoomDetail);
+const bookingRouter = require("./routes/bookingRouter")(RoomDetail);
 
 app.use("/api/booking", bookingRouter);
-
-const userRouter = require("./src/routes/userRouter")(UserDetail);
+const userRouter = require("./routes/userRouter")(UserDetail);
 
 app.use("/api/users", userRouter);
 
-const reservationsRouter = require("./src/routes/reservationsRouter")(
-  Reservation
-);
+const reservationsRouter = require("./routes/reservationsRouter")(Reservation);
 
 app.use("/api/reservations", reservationsRouter);
 

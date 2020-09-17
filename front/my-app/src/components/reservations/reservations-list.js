@@ -17,13 +17,14 @@ function ReservationList() {
   function onChange() {
     setReservations(reservationsStore.getReservations());
   }
-  console.log(reservations);
   return (
-    <ul>
+    <ul className="reservation__container">
       {reservations.map((reservations) => (
-        <li key={reservations.reservationNumber} className="">
+        <li key={reservations.reservationNumber} className="reservation__list">
           <Link to={`/reservations/${reservations.reservationNumber}`}>
-            {reservations.reservationNumber}: {reservations.familyName}
+            Res: {reservations.reservationNumber}
+            <br /> Room: {reservations.roomNumber} <br /> Surname:{" "}
+            {reservations.familyName}
           </Link>
         </li>
       ))}

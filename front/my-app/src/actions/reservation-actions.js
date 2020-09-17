@@ -23,14 +23,16 @@ export function loadReservation(reservationNumber) {
     });
 }
 export function saveReservation(reservation) {
+  debugger;
+
   return axios
     .put(`/api/reservations/${reservation.reservationNumber}`, reservation)
     .then((savedReservation) => {
       dispatcher.dispatch({
-        type: reservation
+        type: reservation.reservationNumber
           ? actionTypes.UPDATE_RESERVATION
           : actionTypes.CREATE_RESERVATION,
-        data: reservation,
+        data: savedReservation,
       });
     });
 }
